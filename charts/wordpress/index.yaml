@@ -1,0 +1,161 @@
+apiVersion: v1
+entries:
+  common:
+  - annotations:
+      category: Infrastructure
+      licenses: Apache-2.0
+    apiVersion: v2
+    appVersion: 2.19.0
+    created: "2024-04-15T08:17:31.201694+02:00"
+    description: A Library Helm Chart for grouping common logic between bitnami charts.
+      This chart is not deployable by itself.
+    digest: 89e4008ba84ebc4b1838b7266bd991958f57eedb841e9268726de971dc78cfd1
+    home: https://bitnami.com
+    icon: https://bitnami.com/downloads/logos/bitnami-mark.png
+    keywords:
+    - common
+    - helper
+    - template
+    - function
+    - bitnami
+    maintainers:
+    - name: VMware, Inc.
+      url: https://github.com/bitnami/charts
+    name: common
+    sources:
+    - https://github.com/bitnami/charts
+    type: library
+    urls:
+    - charts/common-2.19.0.tgz
+    version: 2.19.0
+  mariadb:
+  - annotations:
+      category: Database
+      images: |
+        - name: mariadb
+          image: docker.io/bitnami/mariadb:11.2.3-debian-12-r4
+        - name: mysqld-exporter
+          image: docker.io/bitnami/mysqld-exporter:0.15.1-debian-12-r8
+        - name: os-shell
+          image: docker.io/bitnami/os-shell:12-debian-12-r16
+      licenses: Apache-2.0
+    apiVersion: v2
+    appVersion: 11.2.3
+    created: "2024-04-15T08:17:31.2084884+02:00"
+    dependencies:
+    - name: common
+      repository: oci://registry-1.docker.io/bitnamicharts
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: MariaDB is an open source, community-developed SQL database server
+      that is widely in use around the world due to its enterprise features, flexibility,
+      and collaboration with leading tech firms.
+    digest: 68baeb5bed0d05469e805fff6745b68ddd77a585033a0d03fcc90ab108677529
+    home: https://bitnami.com
+    icon: https://bitnami.com/assets/stacks/mariadb/img/mariadb-stack-220x234.png
+    keywords:
+    - mariadb
+    - mysql
+    - database
+    - sql
+    - prometheus
+    maintainers:
+    - name: VMware, Inc.
+      url: https://github.com/bitnami/charts
+    name: mariadb
+    sources:
+    - https://github.com/bitnami/charts/tree/main/bitnami/mariadb
+    urls:
+    - charts/mariadb-16.5.0.tgz
+    version: 16.5.0
+  memcached:
+  - annotations:
+      category: Infrastructure
+      images: |
+        - name: memcached
+          image: docker.io/bitnami/memcached:1.6.24-debian-12-r0
+        - name: memcached-exporter
+          image: docker.io/bitnami/memcached-exporter:0.14.2-debian-12-r10
+        - name: os-shell
+          image: docker.io/bitnami/os-shell:12-debian-12-r16
+      licenses: Apache-2.0
+    apiVersion: v2
+    appVersion: 1.6.24
+    created: "2024-04-15T08:17:31.213548+02:00"
+    dependencies:
+    - name: common
+      repository: oci://registry-1.docker.io/bitnamicharts
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: Memcached is an high-performance, distributed memory object caching
+      system, generic in nature, but intended for use in speeding up dynamic web applications
+      by alleviating database load.
+    digest: 729aa0fc402dcc3eb493028ef124a744f907b8dba997519bb7dea588703a3c5f
+    home: https://bitnami.com
+    icon: https://bitnami.com/assets/stacks/memcached/img/memcached-stack-220x234.png
+    keywords:
+    - memcached
+    - cache
+    maintainers:
+    - name: VMware, Inc.
+      url: https://github.com/bitnami/charts
+    name: memcached
+    sources:
+    - https://github.com/bitnami/charts/tree/main/bitnami/memcached
+    urls:
+    - charts/memcached-6.14.0.tgz
+    version: 6.14.0
+  wordpress:
+  - annotations:
+      category: CMS
+      images: |
+        - name: apache-exporter
+          image: docker.io/bitnami/apache-exporter:1.0.6-debian-12-r8
+        - name: os-shell
+          image: docker.io/bitnami/os-shell:12-debian-12-r16
+        - name: wordpress
+          image: docker.io/bitnami/wordpress:6.4.3-debian-12-r20
+      licenses: Apache-2.0
+    apiVersion: v2
+    appVersion: 6.4.3
+    created: "2024-04-15T08:17:31.201694+02:00"
+    dependencies:
+    - condition: memcached.enabled
+      name: memcached
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 6.x.x
+    - condition: mariadb.enabled
+      name: mariadb
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 16.x.x
+    - name: common
+      repository: oci://registry-1.docker.io/bitnamicharts
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: WordPress is the world's most popular blogging and content management
+      platform. Powerful yet simple, everyone from students to global corporations
+      use it to build beautiful, functional websites.
+    digest: 13bb5d3f211ed22015c505a6d6508eabdf6f7bcb1e45f462362b0c5c870ffebf
+    home: https://bitnami.com
+    icon: https://bitnami.com/assets/stacks/wordpress/img/wordpress-stack-220x234.png
+    keywords:
+    - application
+    - blog
+    - cms
+    - http
+    - php
+    - web
+    - wordpress
+    maintainers:
+    - name: VMware, Inc.
+      url: https://github.com/bitnami/charts
+    name: wordpress
+    sources:
+    - https://github.com/bitnami/charts/tree/main/bitnami/wordpress
+    urls:
+    - wordpress-20.1.2.tgz
+    version: 20.1.2
+generated: "2024-04-15T08:17:31.1874317+02:00"
